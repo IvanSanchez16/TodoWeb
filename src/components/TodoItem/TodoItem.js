@@ -1,5 +1,5 @@
 import React from "react";
-import { FiCheckCircle, FiCheck, FiTrash2 } from "react-icons/fi";
+import { FiCheck, FiTrash2 } from "react-icons/fi";
 
 import './TodoItem.css';
 
