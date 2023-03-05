@@ -1,17 +1,19 @@
 import React from "react";
+import { FiCheckCircle, FiCheck, FiTrash2 } from "react-icons/fi";
+
 import './TodoItem.css';
 
 function TodoItem({text, completed, onClickComplete, onDelete}) {
 
     return (
         <li className="TodoItem">
-            <span 
+            <button 
                 className={`Icon Icon-check 
                 ${completed && 'Icon-check--active'}`}
                 onClick={onClickComplete}
             >
-                √
-            </span>
+                <FiCheck />
+            </button>
             
             <p 
                 className={`TodoItem-p 
@@ -20,12 +22,12 @@ function TodoItem({text, completed, onClickComplete, onDelete}) {
                 {text}
             </p>
 
-            <span 
+            <button 
                 className="Icon Icon-delete"
                 onClick={onDelete}
             >
-                X
-            </span>
+                <FiTrash2 />
+            </button>
         </li>
     );
 }

@@ -72,6 +72,11 @@ textarea:focus {
     border: none;
     font-family: 'Montserrat';
 }
+.TodoForm-button:hover {
+    transition: all .5s ease;
+    color: #001F3F;
+    background-color: #fff;
+}
 
 .TodoForm-button-add {
     background-color: #61DAFA;
