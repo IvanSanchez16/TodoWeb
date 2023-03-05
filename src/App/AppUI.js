@@ -5,26 +5,16 @@ import { TodoList } from '../components/TodoList/TodoList';
 import { TodoSearch } from '../components/TodoSearch/TodoSearch';
 import { CreateTodoButton } from '../components/CreateTodoButton/CreateTodoButton';
 
-function AppUI({
-    totalTodos,
-    completedTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    toggleCompleteTodo,
-    deleteTodo
-}) {
+import { TodoContext } from "../components/TodoContext";
+
+function AppUI() {
+    const { searchedTodos, toggleCompleteTodo, deleteTodo } = React.useContext(TodoContext);
+
     return (
         <React.Fragment>
-            <TodoCounter 
-                total={totalTodos}
-                completed={completedTodos}
-            />
+            <TodoCounter />
 
-            <TodoSearch
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-            />
+            <TodoSearch />
 
             <TodoList>
                 { searchedTodos.map(todo => (
