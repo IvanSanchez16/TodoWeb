@@ -1,19 +1,9 @@
 import React from 'react';
 import { AppUI } from './AppUI';
-
-const APP_VERSION = 'TODOS_V1';
+import { useLocalStorage } from '../customHooks/useLocalStorage';
 
 function App() {
-  const localStorageTodos = localStorage.getItem(APP_VERSION);
-  let parsedTodos = [];
-
-  if (!localStorageTodos) {
-    localStorage.setItem(APP_VERSION, JSON.stringify(parsedTodos));
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   let searchedTodos = todos;
@@ -24,7 +14,6 @@ function App() {
       return todoText.includes(searchText);
     });
   }
-
   const completedTodos = searchedTodos.filter(todo => todo.completed).length;
   const totalTodos = searchedTodos.length;
 
@@ -39,13 +28,6 @@ function App() {
   const deleteTodo = (text) => {
     const newTodos = todos.filter(todo => todo.text !== text);
     saveTodos(newTodos);
-  }
-
-  const saveTodos = (newTodos) => {
-    const sTodos = JSON.stringify(newTodos);
-    localStorageTodos.setItem(APP_VERSION, sTodos);
-
-    setTodos(newTodos);
   }
 
   return (
