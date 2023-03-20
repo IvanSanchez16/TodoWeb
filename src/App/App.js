@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { TodoHeader } from '../components/TodoHeader/TodoHeader';
 import { TodoCounter } from '../components/TodoCounter/TodoCounter';
 import { TodoItem } from '../components/TodoItem/TodoItem';
 import { TodoList } from '../components/TodoList/TodoList';
@@ -10,6 +11,7 @@ import { TodoForm } from "../components/TodoForm/TodoForm";
 import { EmptyTodos } from '../components/EmptyTodos/EmptyTodos';
 import { TodosLoading } from '../components/TodosLoading/TodosLoading';
 import { TodoError } from '../components/TodoError/TodoError';
+import { EmptySearchResult } from '../components/EmptySearchResult/EmptySearchResult';
 
 import { useTodos } from '../customHooks/useTodos';
 
@@ -32,15 +34,18 @@ function App() {
 
   return (
     <React.Fragment>
-      <TodoCounter
-        total={totalTodos}
-        completed={completedTodos}
-      />
+      
+      <TodoHeader loading={loading}>
+        <TodoCounter
+          total={totalTodos}
+          completed={completedTodos}
+        />
 
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
 
       <TodoList 
         loading={loading}
@@ -50,6 +55,7 @@ function App() {
         onError={ () => <TodoError />}
         onLoading={ () => <TodosLoading />}
         onEmpty={ () => <EmptyTodos /> }
+        onEmptySearchResults={ (searchValue) => <EmptySearchResult searchText={searchValue}/>}
         render={ todo => (
           <TodoItem
             key={todo.text}
