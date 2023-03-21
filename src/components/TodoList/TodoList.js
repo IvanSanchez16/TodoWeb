@@ -14,9 +14,9 @@ function TodoList({
         <section className="TodoList-container">
             {error && onError()}
             {!error && loading && onLoading()}
-            {(!loading &&!searchedTodos?.length) && onEmpty()}
+            {(!loading && !searchedTodos?.length) && onEmpty()}
 
-            {searchedTodos.map(render)} {/*Lo mismo que {searchedTodos.map(todo => render(todo))}*/}
+            {(!loading && !error) && searchedTodos.map(render)} {/*Lo mismo que {searchedTodos.map(todo => render(todo))}*/}
         </section>
     );
 }

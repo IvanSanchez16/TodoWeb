@@ -12,6 +12,7 @@ import { EmptyTodos } from '../components/EmptyTodos/EmptyTodos';
 import { TodosLoading } from '../components/TodosLoading/TodosLoading';
 import { TodoError } from '../components/TodoError/TodoError';
 import { EmptySearchResult } from '../components/EmptySearchResult/EmptySearchResult';
+import { ChangeAlertWithStorageListener } from '../components/ChangeAlert/ChangeAlert';
 
 import { useTodos } from '../customHooks/useTodos';
 
@@ -29,7 +30,8 @@ function App() {
     completedTodos,
     searchValue,
     setSearchValue,
-    addTodo
+    addTodo,
+    sincronizeTodos
   } = useTodos();
 
   return (
@@ -78,6 +80,10 @@ function App() {
           />
         </ModalAgregar>
       )}
+
+      <ChangeAlertWithStorageListener
+        sincronize={sincronizeTodos}
+      />
     </React.Fragment>
   );
 }
