@@ -12,7 +12,7 @@ import { EmptyTodos } from '../components/EmptyTodos/EmptyTodos';
 import { TodosLoading } from '../components/TodosLoading/TodosLoading';
 import { TodoError } from '../components/TodoError/TodoError';
 import { EmptySearchResult } from '../components/EmptySearchResult/EmptySearchResult';
-import { ChangeAlertWithStorageListener } from '../components/ChangeAlert/ChangeAlert';
+import { ChangeAlert } from '../components/ChangeAlert/ChangeAlert';
 
 import { useTodos } from '../customHooks/useTodos';
 
@@ -81,7 +81,7 @@ function App() {
         </ModalAgregar>
       )}
 
-      <ChangeAlertWithStorageListener
+      <ChangeAlert
         sincronize={sincronizeTodos}
       />
     </React.Fragment>
