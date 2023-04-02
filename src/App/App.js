@@ -18,21 +18,26 @@ import { useTodos } from '../customHooks/useTodos';
 
 function App() {
 
+  const { state, stateUpdaters } = useTodos();
+
   const {
     loading,
     error,
-    searchedTodos,
-    toggleCompleteTodo,
-    deleteTodo,
-    openModal,
-    setOpenModal,
     totalTodos,
     completedTodos,
     searchValue,
+    searchedTodos,
+    openModal
+  } = state;
+
+  const {
     setSearchValue,
     addTodo,
+    toggleCompleteTodo,
+    deleteTodo,
+    setOpenModal,
     sincronizeTodos
-  } = useTodos();
+  } = stateUpdaters;
 
   return (
     <React.Fragment>
@@ -54,8 +59,8 @@ function App() {
         error={error}
         searchedTodos={searchedTodos}
         
-        onError={ () => <TodoError />}
-        onLoading={ () => <TodosLoading />}
+        onError={ () => <TodoError /> }
+        onLoading={ () => <TodosLoading /> }
         onEmpty={ () => <EmptyTodos /> }
         onEmptySearchResults={ (searchValue) => <EmptySearchResult searchText={searchValue}/>}
         render={ todo => (
